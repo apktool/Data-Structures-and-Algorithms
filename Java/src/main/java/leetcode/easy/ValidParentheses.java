@@ -17,8 +17,8 @@ import java.util.Stack;
 public class ValidParentheses {
     public boolean isValid1(String s) {
         char[] chars = s.toCharArray();
-        Stack<Character> stack = new Stack<>();
-        HashMap<Character, Character> hashMap = new HashMap<>();
+        Stack<Character> stack = new Stack<Character>();
+        HashMap<Character, Character> hashMap = new HashMap<Character, Character>();
         hashMap.put(')', '(');
         hashMap.put('}', '{');
         hashMap.put(']', '[');
@@ -46,7 +46,7 @@ public class ValidParentheses {
         if (s == null || s.length() == 0) {
             return true;
         }
-        Stack<Character> stack = new Stack<>();
+        Stack<Character> stack = new Stack<Character>();
         for (char c : s.toCharArray()) {
             switch (c) {
                 case '(': stack.push(')'); break;
