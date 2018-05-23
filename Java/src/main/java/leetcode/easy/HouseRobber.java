@@ -45,6 +45,26 @@ public class HouseRobber {
         return curr;
     }
 
+    public int rob3(int[] nums) {
+        if(nums.length < 2) {
+            return nums.length == 0 ? 0: nums[0];
+        }
+
+        int[] dp = new int[nums.length];
+
+        if(nums.length > 1) {
+            dp[0] = nums[0];
+            dp[1] = Math.max(nums[0], nums[1]);
+        }
+
+        for (int i = 2; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+        }
+
+        return dp[nums.length - 1];
+    }
+
+
     public static void main(String[] args) {
         int[] nums = {1, 2, 2, 1};
         int result;
@@ -55,6 +75,9 @@ public class HouseRobber {
         System.out.println(result);
 
         result = haha.rob2(nums);
+        System.out.println(result);
+
+        result = haha.rob3(nums);
         System.out.println(result);
     }
 }
