@@ -5,7 +5,7 @@ package leetcode.medium;
  * @date 2018-05-23 23:03
  * *
  * Given an integer array nums, find the contiguous subarray within an array (containing at least one number) which has the largest product.
- * <p>
+ *
  * Example 1:
  * Input: [2,3,-2,4]
  * Output: 6
@@ -16,17 +16,21 @@ public class MaximumProductSubarray {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int n = nums.length;
-        int[] maxdp = new int[n + 1];
-        int[] mindp = new int[n + 1];
+
+        int[] maxdp = new int[nums.length];
+        int[] mindp = new int[nums.length];
         int maxVal = Integer.MIN_VALUE;
-        maxdp[0] = 1;
-        mindp[0] = 1;
-        for (int i = 1; i < n + 1; i++) {
-            maxdp[i] = Math.max(maxdp[i - 1] * nums[i - 1], Math.max(mindp[i - 1] * nums[i - 1], nums[i - 1]));
-            mindp[i] = Math.min(mindp[i - 1] * nums[i - 1], Math.min(maxdp[i - 1] * nums[i - 1], nums[i - 1]));
-            maxVal = Math.max(maxVal, maxdp[i]);
+
+        for (int i = 0; i < nums.length; i++) {
+            if (i == 0) {
+                maxVal = maxdp[i] = mindp[i] = nums[i];
+            } else {
+                maxdp[i] = Math.max(maxdp[i - 1] * nums[i], Math.max(mindp[i - 1] * nums[i], nums[i]));
+                mindp[i] = Math.min(mindp[i - 1] * nums[i], Math.min(maxdp[i - 1] * nums[i], nums[i]));
+                maxVal = Math.max(maxVal, maxdp[i]);
+            }
         }
+
         return maxVal;
     }
 
