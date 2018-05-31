@@ -36,6 +36,7 @@ public class Permutation {
         String temp = array[left];
         array[left] = array[right];
         array[right] = temp;
+//        System.out.printf("%d - %d\n", left, right);
     }
 
     public void display(String[] array) {

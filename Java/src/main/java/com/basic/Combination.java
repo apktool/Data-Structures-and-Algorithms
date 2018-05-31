@@ -16,7 +16,7 @@ package com.basic;
 public class Combination {
     private void combination(String[] array, int n, int m) {
         String[] data = new String[m];
-        combinationHelper(array, data, 0, n - 1, 0, m);
+        combinationHelper(array, data, 0, n, 0, m);
     }
 
     private void combinationHelper(String[] array, String[] data, int start, int end, int index, int r) {
@@ -25,7 +25,7 @@ public class Combination {
             return;
         }
 
-        for (int i = start; i <= end && end - i + 1 >= r - index; i++) {
+        for (int i = start; i < end && end - i >= r - index; i++) {
             data[index] = array[i];
             combinationHelper(array, data, i + 1, end, index + 1, r);
         }
