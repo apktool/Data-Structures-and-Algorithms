@@ -16,18 +16,19 @@ package com.basic;
 public class Combination {
     private void combination(String[] array, int n, int m) {
         String[] data = new String[m];
+
         combinationHelper(array, data, 0, n, 0, m);
     }
 
-    private void combinationHelper(String[] array, String[] data, int start, int end, int index, int r) {
-        if (index == r) {
+    private void combinationHelper(String[] array, String[] data, int aStart, int aEnd, int dStart, int dEnd) {
+        if(dStart == dEnd) {
             display(data);
             return;
         }
 
-        for (int i = start; i < end && end - i >= r - index; i++) {
-            data[index] = array[i];
-            combinationHelper(array, data, i + 1, end, index + 1, r);
+        for (int i = aStart; i < aEnd && aEnd - i >= dEnd - dStart; i++) {
+            data[dStart] = array[i];
+            combinationHelper(array, data, i + 1, aEnd, dStart + 1, dEnd);
         }
     }
 
