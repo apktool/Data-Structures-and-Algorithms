@@ -1,4 +1,4 @@
-package geeksforgeeks.medium;
+package company.sangfor;
 
 import java.util.ArrayList;
 
@@ -12,6 +12,9 @@ import java.util.ArrayList;
  * 深信服提前批编程题
  * Reference
  * https://www.geeksforgeeks.org/perfect-sum-problem-print-subsets-given-sum/
+ * *
+ * CombinationSum.java
+ * CombinationSumII.java
  */
 public class PerfectSum {
     static boolean[][] dp;
