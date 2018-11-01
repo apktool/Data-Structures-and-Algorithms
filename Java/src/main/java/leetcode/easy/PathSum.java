@@ -1,6 +1,5 @@
 package leetcode.easy;
 
-import javafx.scene.shape.Path;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NonNull;
