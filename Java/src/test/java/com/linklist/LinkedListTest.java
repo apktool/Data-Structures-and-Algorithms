@@ -1,7 +1,7 @@
 package com.linklist;
 
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class LinkedListTest {
     private LinkedList<String> linkedList = new LinkedList<String>();

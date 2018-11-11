@@ -1,10 +1,9 @@
 package com.sequencelist;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
-
-import static org.junit.Assert.assertEquals;
 
 public class ArrayListTest {
     private ArrayList<String> arrayList = new ArrayList(10);
@@ -77,6 +76,6 @@ public class ArrayListTest {
         iterator.next();  // hello world
         iterator.remove(); // hello world被删除
         /* 新创建的一个iterator与原来iterator对比 */
-        assertEquals(arrayList.iterator().next(), iterator.next());
+        Assertions.assertEquals(arrayList.iterator().next(), iterator.next());
     }
 }
