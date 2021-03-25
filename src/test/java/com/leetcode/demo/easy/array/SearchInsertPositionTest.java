@@ -1,4 +1,4 @@
-package com.leetcode.demo.easy.greedy;
+package com.leetcode.demo.easy.array;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.leetcode.demo.easy.greedy;
+package com.leetcode.demo.easy.array;
 
 import java.util.HashMap;
 import java.util.Map;
