@@ -1,5 +1,7 @@
 package com.leetcode.demo.easy.dp;
 
+import java.util.Arrays;
+
 /**
  * 给你一个字符串 s，找到 s 中最长的回文子串。
  * * 子串(substring): 原始字符串的一个连续子集
@@ -22,6 +24,39 @@ public class LongestPalindromicSubstring {
         }
 
         boolean[][] dp = new boolean[s.length()][s.length()];
+        int len = 1;
+        int start = 0;
+
+        for (int i = 0; i < dp.length; ++i) {
+            Arrays.fill(dp[i], true);
+        }
+
+        for (int i = s.length() - 1; i >= 0; --i) {
+            for (int j = i + 1; j < s.length(); ++j) {
+                dp[i][j] = (s.charAt(i) == s.charAt(j)) && dp[i + 1][j - 1];
+
+                if (dp[i][j] && len < j - i + 1) {
+                    start = i;
+                    len = j - i + 1;
+                }
+            }
+        }
+
+        return s.substring(start, start + len);
+    }
+
+    /**
+     * 动态规划法
+     *
+     * @param s
+     * @return
+     */
+    public String solve02(String s) {
+        if (s.length() < 2) {
+            return s;
+        }
+
+        boolean[][] dp = new boolean[s.length()][s.length()];
 
         for (int i = 0; i < dp.length; i++) {
             dp[i][i] = true;
@@ -32,7 +67,7 @@ public class LongestPalindromicSubstring {
 
         // dp[i][j] = dp[i + 1][j - 1] && s[i] == s[j]
         for (int j = 1; j < dp.length; j++) {
-            for (int i = 0; i < dp.length; i++) {
+            for (int i = 0; i < dp[j].length; i++) {
                 if (s.charAt(i) != s.charAt(j)) {
                     dp[i][j] = false;
                 } else {
@@ -53,6 +88,7 @@ public class LongestPalindromicSubstring {
         return s.substring(start, start + len);
     }
 
+
     /**
      * 中心扩展算法
      *
@@ -60,7 +96,7 @@ public class LongestPalindromicSubstring {
      * @return
      */
 
-    public String solve02(String s) {
+    public String solve03(String s) {
         int start = 0, end = 0;
         for (int i = 0; i < s.length(); i++) {
             int len1 = expandAroundCenter(s, i, i);
