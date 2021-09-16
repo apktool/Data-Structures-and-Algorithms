@@ -32,4 +32,19 @@ public class NonOverlappingIntervals {
         }
         return cnt;
     }
+
+    public int solve02(int[][] intervals) {
+        Arrays.sort(intervals, (o1, o2) -> o1[1] - o2[1]);
+
+        int cnt = 1;
+        int end = intervals[0][1];
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] >= end) {
+                // 计算出不重叠的
+                cnt++;
+                end = intervals[i][1];
+            }
+        }
+        return intervals.length - cnt;
+    }
 }
